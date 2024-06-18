@@ -1,0 +1,47 @@
+<app-navbar></app-navbar>
+
+<div
+  class="container-sm"
+  style="
+    background-color: #81b1ce;
+    margin-top: 100px;
+    height: 350px;
+    max-width: 500px;
+  "
+>
+  <form style="padding: 40px">
+    <!-- Databinding here I am Using concept of interpolation as login type is passed 
+    from member-login.component.ts file to this html file its one way binding means 
+    from .ts-> to .html  -->
+
+    <!-- [(ngModel)]="email" 
+    this is for two way binding it is part of FormModule -->
+
+    <!-- (change)="displayEmail()"
+    this is calling a function dec;ared in member-login.component.ts -->
+    <h3 style="text-align: center">{{ loginType }}</h3>
+    <div class="mb-3">
+      <label for="InputEmail1" class="form-label">Email address</label>
+      <input
+        type="email"
+        [(ngModel)]="email"
+        name="email"
+        (change)="displayEmail()"
+        class="form-control"
+        id="InputEmail1"
+        aria-describedby="emailHelp"
+        placeholder="Enter Email"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="InputPassword1" class="form-label">Password</label>
+      <input
+        type="password"
+        class="form-control"
+        id="InputPassword1"
+        placeholder="Enter Password"
+      />
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>

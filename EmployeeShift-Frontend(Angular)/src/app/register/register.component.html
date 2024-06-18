@@ -1,0 +1,100 @@
+<app-navbar></app-navbar>
+
+<div
+  class="container-sm"
+  style="
+    background-color: #81b1ce;
+    margin-top: 100px;
+    margin-bottom: 100px;
+    height: 500px;
+    /* height: 350px; */
+    max-width: 500px;
+    border-radius: 10%;
+  "
+>
+  <form
+    style="padding: 40px"
+    #usersForm="ngForm"
+    (ngSubmit)="getUserFormData(usersForm.value)"
+  >
+    <h3 style="text-align: center">
+      <i class="fa-solid fa-users-line"></i>
+      Register
+    </h3>
+    <div class="mb-3">
+      <label for="Inputorganization" class="form-label">
+        <i class="fa-solid fa-building fa-bounce"></i> Organization Name
+      </label>
+      <input
+        type="text"
+        ngModel
+        name="organization"
+        class="form-control"
+        id="Inputorganization"
+        placeholder="Enter Organization Name"
+      />
+    </div>
+
+    <div class="mb-3">
+      <label for="InputEmail" class="form-label">
+        <i class="fa-solid fa-envelope fa-bounce"></i> Email address
+      </label>
+      <input
+        type="email"
+        ngModel
+        name="userName"
+        class="form-control"
+        id="InputEmail"
+        aria-describedby="emailHelp"
+        placeholder="Enter Email"
+      />
+    </div>
+
+    <div class="mb-3">
+      <label for="PhoneNumber" class="form-label">
+        <i class="fa-solid fa-square-phone fa-bounce"></i> Phone Number
+      </label>
+      <input
+        type="number"
+        ngModel
+        name="phoneNumber"
+        class="form-control"
+        id="PhoneNumber"
+        placeholder="Enter Your Phone Number"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="InputPassword" class="form-label">
+        <i class="fa-solid fa-lock fa-bounce"></i> Password
+      </label>
+      <input
+        type="password"
+        name="password"
+        ngModel
+        class="form-control"
+        id="InputPassword"
+        placeholder="Enter Password"
+      />
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
+<!-- #8fb1ce -->
+<!-- #7cb8ce -->
+
+<div class="card text-center">
+  <div class="card-header" style="background-color: #8fb1ce">Contact Us</div>
+  <div class="card-body" style="background-color: #81b1ce">
+    <h5 class="card-title">Special title treatment</h5>
+    <p class="card-text">
+      With supporting text below as a natural lead-in to additional content.
+    </p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+  <div
+    class="card-footer text-body-secondary"
+    style="background-color: #8fb1ce"
+  >
+    &#64;2024 Ltd <i class="fa-brands fa-facebook"></i>
+  </div>
+</div>

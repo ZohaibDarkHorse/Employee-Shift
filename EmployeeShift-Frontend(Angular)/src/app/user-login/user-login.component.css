@@ -1,0 +1,4 @@
+.navbar-color {
+  background-color: #81b1ce !important;
+  /* important overides the boostrap color css */
+}

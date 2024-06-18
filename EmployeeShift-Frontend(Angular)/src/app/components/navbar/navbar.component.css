@@ -1,0 +1,9 @@
+.navbar-color {
+  background-color: #81b1ce !important;
+  /* important overides the boostrap color css */
+}
+
+.d-flex {
+  margin-left: 20px;
+  gap: 20px; /* Adds space between the links */
+}
