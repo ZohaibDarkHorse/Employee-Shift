@@ -1,4 +1,4 @@
-package com.employeeShift.EmployeeShiftProject.dao;
+package com.employeeShift.EmployeeShiftProject.service;
 
 import java.util.List;
 
@@ -25,11 +25,11 @@ public class UserServiceImpl implements UserService {
 		
 	}
 	@Override
-	public List<Employee> getAllEmployee(User user) {
+	public List<Employee> getAllEmployee(String allocatedBy) {
 		//List<Employee> allEmployee = employeeRepository.find
 		
 		
-		return employeeRepository.findByOrganizationAndAllocatedBy(user.getOrganization(), user.getUserName());
+		return employeeRepository.findByAllocatedBy(allocatedBy);
 	}
 
 }

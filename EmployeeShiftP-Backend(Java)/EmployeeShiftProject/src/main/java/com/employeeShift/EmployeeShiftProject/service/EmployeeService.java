@@ -1,4 +1,4 @@
-package com.employeeShift.EmployeeShiftProject.dao;
+package com.employeeShift.EmployeeShiftProject.service;
 
 import java.util.List;
 

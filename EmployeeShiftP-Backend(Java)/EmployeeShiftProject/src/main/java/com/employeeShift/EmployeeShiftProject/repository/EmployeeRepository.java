@@ -12,5 +12,7 @@ import com.employeeShift.EmployeeShiftProject.model.Employee;
 //Long suggest the model has unique Id that is of Long type
 @Repository
 public interface EmployeeRepository extends JpaRepository<Employee, Long>{
-    List<Employee> findByOrganizationAndAllocatedBy(String organization, String allocatedBy);
+    List<Employee> findByAllocatedBy(String allocatedBy);
+    
+   
 }

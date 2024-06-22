@@ -1,1 +1,66 @@
-<p>home works!</p>
+<app-navbar></app-navbar>
+<p>
+  <button
+    style="margin-top: 20px; margin-left: 200px"
+    (click)="getAllEmployee()"
+    class="btn btn-primary"
+    type="button"
+    data-bs-toggle="collapse"
+    data-bs-target="#getEmployeeTable"
+    aria-expanded="false"
+    aria-controls="collapseWidthExample"
+  >
+    GetAllEmployeeDetails
+  </button>
+</p>
+
+<div style="min-height: 120px">
+  <div class="collapse collapse-horizontal" id="getEmployeeTable">
+    <div class="card card-body p-0">
+      <!-- Added p-0 to remove card-body padding -->
+      <table class="table table-hover mb-0">
+        <!-- Added mb-0 to remove table margin-bottom -->
+        <thead class="table-dark">
+          <tr>
+            <th>Employee ID</th>
+            <th>Allocated By</th>
+            <th>Email ID</th>
+            <th>Employee Name</th>
+            <th>Organization</th>
+            <th>Project</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of users">
+            <td>{{ user.id }}</td>
+            <td>{{ user.allocatedBy }}</td>
+            <td>{{ user.emailId }}</td>
+            <td>{{ user.name }}</td>
+            <td>{{ user.organization }}</td>
+            <td>{{ user.project }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div
+  class="card text-center"
+  style="bottom: 0; position: absolute; width: 100%"
+>
+  <div class="card-header" style="background-color: #8fb1ce">Contact Us</div>
+  <div class="card-body" style="background-color: #81b1ce">
+    <h5 class="card-title">Special title treatment</h5>
+    <p class="card-text">
+      With supporting text below as a natural lead-in to additional content.
+    </p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+  <div
+    class="card-footer text-body-secondary"
+    style="background-color: #8fb1ce"
+  >
+    &#64;2024 Ltd <i class="fa-brands fa-facebook"></i>
+  </div>
+</div>

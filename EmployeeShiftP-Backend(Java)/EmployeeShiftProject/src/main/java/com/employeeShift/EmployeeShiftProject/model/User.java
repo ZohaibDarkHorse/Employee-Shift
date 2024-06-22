@@ -1,7 +1,11 @@
 package com.employeeShift.EmployeeShiftProject.model;
 
-import java.util.ArrayList;
-import java.util.List;
+
+
+import java.util.Collection;
+
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -12,7 +16,7 @@ import jakarta.persistence.*;
 @Entity
 @Table(name="Users")
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-public class User  {
+public class User implements UserDetails  {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long userId;
@@ -28,7 +32,7 @@ public class User  {
 	//a user can have multiple role
 	@OneToMany(cascade = CascadeType.ALL,fetch=FetchType.EAGER,mappedBy = "user")
 	@JsonIgnore
-	private List<UserRole> userRoles = new ArrayList<UserRole>();
+	
 	
 	
 	
@@ -75,19 +79,25 @@ public class User  {
 	}
 
 
-	public List<UserRole> getUserRoles() {
-		return userRoles;
-	}
 
-	public void setUserRoles(List<UserRole> userRoles) {
-		this.userRoles = userRoles;
-	}
-	
 	@Override
 	public String toString() {
 		return "User [userId=" + userId + ", userName=" + userName + ", password=" + password + ", organization="
-				+ organization + ", phoneNumber=" + phoneNumber + ", userRoles=" + userRoles + "]";
+				+ organization + ", phoneNumber=" + phoneNumber + "]";
 	}
+
+	@Override
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String getUsername() {
+		// TODO Auto-generated method stub
+		return this.userName;
+	}
+
 
 
 
