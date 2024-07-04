@@ -1,0 +1,35 @@
+<div class="cardMain" *ngIf="showModal">
+  <div class="card-header" style="display: flex; justify-content: flex-end">
+    <button class="btn btn-danger" (click)="closeModal()" stle="margin-right">
+      <i class="fa-solid fa-circle-xmark"></i>
+    </button>
+  </div>
+  <div
+    class="card"
+    style="width: 30rem"
+    *ngIf="userDetail && userDetail.GetEmployeeResponse"
+  >
+    <img
+      [src]="
+        'http://localhost:8080/images/download/' +
+        userDetail.GetEmployeeResponse.profileImage
+      "
+      style="width: 30rem; height: 25rem"
+      alt="Profile Image"
+    />
+    <div class="card-body">
+      <p class="card-text">
+        Employee Name: {{ userDetail.GetEmployeeResponse.name }}
+      </p>
+      <p class="card-text">
+        Allocated By: {{ userDetail.GetEmployeeResponse.allocatedBy }}
+      </p>
+      <p class="card-text">
+        Email: {{ userDetail.GetEmployeeResponse.emailId }}
+      </p>
+      <p class="card-text">
+        Project: {{ userDetail.GetEmployeeResponse.project }}
+      </p>
+    </div>
+  </div>
+</div>

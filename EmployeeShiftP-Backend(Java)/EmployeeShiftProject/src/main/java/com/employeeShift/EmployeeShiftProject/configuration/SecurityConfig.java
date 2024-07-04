@@ -41,6 +41,7 @@ public class SecurityConfig {
                 //.cors().disable()
                 .authorizeRequests()
                 .requestMatchers("/employeeShift/auth/login").permitAll().requestMatchers("/employeeShift/registerUser").permitAll()
+                .requestMatchers("/images/**").permitAll() // Allow access to images
                 .anyRequest()
                 .authenticated()
                 .and().exceptionHandling(ex -> ex.authenticationEntryPoint(point))

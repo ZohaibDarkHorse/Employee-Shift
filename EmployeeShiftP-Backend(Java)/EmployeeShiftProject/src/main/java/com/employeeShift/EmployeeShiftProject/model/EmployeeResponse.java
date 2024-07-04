@@ -7,7 +7,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class EmployeeResponse {
-@JsonProperty("GetEmployee")
+@JsonProperty("GetEmployeeResponse")
 private Employee employee;
 
 @JsonProperty("GetAllEmployee")

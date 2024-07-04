@@ -27,6 +27,8 @@ public class Employee {
 	private String allocatedBy;
 	@Column
 	private String organization;
+	@Column 
+	private String profileImage;
 	
 
 	public Employee() {
@@ -70,12 +72,19 @@ public class Employee {
 	public void setAllocatedBy(String allocatedBy) {
 		this.allocatedBy = allocatedBy;
 	}
+	public String getProfileImage() {
+		return profileImage;
+	}
+	public void setProfileImage(String profileImage) {
+		this.profileImage = profileImage;
+	}
 	@Override
 	public String toString() {
-		return "Employee [id=" + empId + ", name=" + name + ", project=" + project + ", emailId=" + emailId
-				+ ", allocatedBy=" + allocatedBy + ", Organization=" + organization + "]";
+		return "Employee [empId=" + empId + ", name=" + name + ", project=" + project + ", emailId=" + emailId
+				+ ", allocatedBy=" + allocatedBy + ", organization=" + organization + ", profileImage=" + profileImage
+				+ "]";
 	}
-
+	
 
 
 	

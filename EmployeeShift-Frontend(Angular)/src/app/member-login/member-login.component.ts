@@ -3,11 +3,12 @@ import { FormsModule } from '@angular/forms';
 import { NavbarComponent } from '../components/navbar/navbar.component';
 import { ApiServiceService } from '../../services/api-service.service';
 import { Location } from '@angular/common';
+import { FooterComponent } from '../components/footer/footer.component';
 
 @Component({
   selector: 'app-member-login',
   standalone: true,
-  imports: [FormsModule, NavbarComponent],
+  imports: [FormsModule, NavbarComponent, FooterComponent],
   templateUrl: './member-login.component.html',
   styleUrl: './member-login.component.css',
 })
@@ -29,8 +30,6 @@ export class MemberLoginComponent {
       this.location.go('/home');
       window.location.reload();
     });
-
-    console.log(this.service.token);
   }
 
   //this function we will call in member-login html component

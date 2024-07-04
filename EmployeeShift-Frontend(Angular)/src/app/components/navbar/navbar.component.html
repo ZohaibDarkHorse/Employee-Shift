@@ -10,10 +10,18 @@
       {{ brand }}
     </a>
     <div class="d-flex ms-4">
-      <a class="navbar-brand mb-0 h1" href="#">{{ link1 }}</a>
-      <a class="navbar-brand mb-0 h1" href="#">{{ link2 }}</a>
-      <a class="navbar-brand mb-0 h1" href="#">{{ link3 }}</a>
-      <a class="navbar-brand mb-0 h1" href="#">{{ link4 }}</a>
+      <a class="navbar-brand mb-0 h1" href="home">{{ link1 }}</a>
+      <a *ngIf="log != 'yes'" class="navbar-brand mb-0 h1" href="">{{
+        link2
+      }}</a>
+      <a
+        *ngIf="log == 'yes'"
+        class="navbar-brand mb-0 h1"
+        href="#"
+        (click)="logOut()"
+        >{{ link3 }}</a
+      >
+      <a class="navbar-brand mb-0 h1" href="register">{{ link4 }}</a>
     </div>
   </div>
 </nav>

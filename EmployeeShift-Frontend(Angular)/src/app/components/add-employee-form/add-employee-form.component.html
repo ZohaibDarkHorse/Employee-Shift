@@ -1,0 +1,75 @@
+<form
+  #addEmployeeDetailForm="ngForm"
+  (ngSubmit)="addEmployeeDetailsForm(addEmployeeDetailForm)"
+>
+  <div class="mb-3">
+    <label for="InputEmployeeName" class="form-label">Employee Name:</label>
+    <input
+      type="text"
+      ngModel
+      name="name"
+      class="form-control"
+      id="InputEmployeeName"
+    />
+  </div>
+
+  <div class="mb-3">
+    <label for="InputProject" class="form-label">Project:</label>
+    <input
+      type="text"
+      ngModel
+      name="project"
+      class="form-control"
+      id="InputProject"
+    />
+  </div>
+
+  <div class="mb-3">
+    <label for="InputEmail1" class="form-label">Email address</label>
+    <input
+      type="email"
+      ngModel
+      name="emailId"
+      class="form-control"
+      id="InputEmail1"
+    />
+  </div>
+  <div class="mb-3">
+    <label for="InputAllocatedBy" class="form-label">AllocatedBy</label>
+    <input
+      type="email"
+      ngModel
+      name="allocatedBy"
+      class="form-control"
+      id="InputAllocatedBy"
+      [(ngModel)]="username"
+      disabled="true"
+    />
+  </div>
+
+  <div class="mb-3">
+    <label for="InputOrganization" class="form-label">Organization</label>
+    <input
+      type="email"
+      ngModel
+      name="organization"
+      class="form-control"
+      id="InputOrganization"
+    />
+  </div>
+  <div class="mb-3">
+    <label for="InputProfileImage" class="form-label">ProfileImage</label>
+    <input
+      type="file"
+      ngModel
+      name="image"
+      class="form-control"
+      id="InputProfileImage"
+      (change)="onFileSelected($event)"
+    />
+  </div>
+
+  <button type="submit" class="btn btn-success">
+    <i class="fa-solid fa-floppy-disk"></i>
+  </button>
+</form>

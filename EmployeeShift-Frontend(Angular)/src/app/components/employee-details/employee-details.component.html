@@ -1,0 +1,58 @@
+<table class="table table-hover mb-0" style="margin-top: 10px">
+  <!-- Added mb-0 to remove table margin-bottom -->
+  <thead class="table-dark">
+    <tr>
+      <th>Employee ID</th>
+      <th>Allocated By</th>
+      <th>Email ID</th>
+      <th>Employee Name</th>
+      <th>Organization</th>
+      <th>Project</th>
+      <th>Edit</th>
+      <th>Delete</th>
+      <th>View</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr
+      *ngFor="
+        let user of users
+          | paginate : { itemsPerPage: psize, currentPage: currentPage }
+      "
+    >
+      <td>{{ user.id }}</td>
+      <td>{{ user.allocatedBy }}</td>
+      <td>{{ user.emailId }}</td>
+      <td>{{ user.name }}</td>
+      <td>{{ user.organization }}</td>
+      <td>{{ user.project }}</td>
+      <td>
+        <button type="button" class="btn btn-warning">
+          <i class="fa-solid fa-user-pen"></i>
+        </button>
+      </td>
+      <td>
+        <button
+          type="button"
+          class="btn btn-danger"
+          (click)="deleteByID(user.id, $event)"
+        >
+          <i class="fa-solid fa-trash"></i>
+        </button>
+      </td>
+      <td>
+        <button class="btn btn-info" (click)="onViewBtnClick(user.id)">
+          <i class="fa-solid fa-eye"></i>
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<pagination-controls (pageChange)="currentPage = $event"></pagination-controls>
+
+<app-modals
+  *ngIf="viewEmployeeDetail == true"
+  [userDetail]="userById"
+  class="modal-overlay"
+  (updateEvent)="getValueFromModal($event)"
+></app-modals>

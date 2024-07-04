@@ -1,24 +1,26 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { NavbarDataService } from '../../../services/navbar-data.service';
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css',
 })
 export class NavbarComponent {
-  brand = '';
-  link1 = '';
-  link2 = '';
-  link3 = '';
-  link4 = '';
-  constructor(private navBarData: NavbarDataService) {
-    this.brand = navBarData.brand;
-    this.link1 = navBarData.link1;
-    this.link2 = navBarData.link2;
-    this.link3 = navBarData.link3;
-    this.link4 = navBarData.link4;
+  brand = 'EmployeeShift';
+  link1 = 'Home';
+  link2 = 'Login';
+  link3 = 'Logout';
+  link4 = 'Register';
+
+  @Input() log = 'no';
+
+  logOut() {
+    localStorage.clear();
   }
+
+  ngOnInit() {}
 }

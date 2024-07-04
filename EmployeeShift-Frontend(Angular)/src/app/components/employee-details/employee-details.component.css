@@ -1,0 +1,21 @@
+.modal-overlay {
+  position: fixed; /* or absolute depending on your layout needs */
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000; /* Ensure this is higher than other elements */
+  background-color: white; /* Adjust as needed */
+  padding: 20px; /* Adjust as needed */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional for a shadow effect */
+  border-radius: 20px; /* Optional for rounded corners */
+}
+/* Media query for screens smaller than 600px (mobile devices) */
+@media (max-width: 600px) {
+  .modal-overlay {
+    width: 90%; /* Adjust width for mobile screens */
+    top: 50%; /* Reposition for better visibility */
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 15px; /* Adjust padding for mobile screens */
+  }
+}

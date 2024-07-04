@@ -58,11 +58,7 @@ public class EmployeeController {
 	
 	
 
-	@PostMapping("employeeShift/addEmployee")
-	public void addEmployee(@RequestBody Employee employee) {
-		employeeServiceImpl.saveEmployee(employee);
-		
-	}
+
 	
 	@PutMapping("employeeShift/updateEmployeeDetails")
 	public void updateEmployee(@RequestBody Employee emp) {
