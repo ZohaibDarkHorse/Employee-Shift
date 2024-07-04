@@ -27,7 +27,11 @@
       <td>{{ user.organization }}</td>
       <td>{{ user.project }}</td>
       <td>
-        <button type="button" class="btn btn-warning">
+        <button
+          type="button"
+          class="btn btn-warning"
+          (click)="onUpdateBtnClicK(user.id)"
+        >
           <i class="fa-solid fa-user-pen"></i>
         </button>
       </td>
@@ -56,3 +60,9 @@
   class="modal-overlay"
   (updateEvent)="getValueFromModal($event)"
 ></app-modals>
+
+<app-update-card
+  *ngIf="viewUpdateEmployee == true"
+  [userDetail]="userById"
+  class="modal-overlay"
+></app-update-card>

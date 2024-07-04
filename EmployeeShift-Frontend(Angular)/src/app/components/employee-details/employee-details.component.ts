@@ -3,11 +3,17 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { ApiServiceService } from '../../../services/api-service.service';
 import { CommonModule } from '@angular/common';
 import { ModalsComponent } from '../modals/modals.component';
+import { UpdateCardComponent } from '../update-card/update-card.component';
 
 @Component({
   selector: 'app-employee-details',
   standalone: true,
-  imports: [NgxPaginationModule, CommonModule, ModalsComponent],
+  imports: [
+    NgxPaginationModule,
+    CommonModule,
+    ModalsComponent,
+    UpdateCardComponent,
+  ],
   templateUrl: './employee-details.component.html',
   styleUrl: './employee-details.component.css',
 })
@@ -17,6 +23,7 @@ export class EmployeeDetailsComponent {
   users: any;
   userById: any;
   viewEmployeeDetail = false;
+  viewUpdateEmployee = false;
   psize = 10;
   currentPage = 1;
   constructor(private service: ApiServiceService) {
@@ -44,6 +51,9 @@ export class EmployeeDetailsComponent {
   showEmployeeDetails() {
     this.viewEmployeeDetail = !this.viewEmployeeDetail;
   }
+  showUpdateEmployeeDetails() {
+    this.viewUpdateEmployee = !this.viewUpdateEmployee;
+  }
   deleteByID(id: any, event: Event) {
     event.stopPropagation(); // Stop the click event from propagating to the row
     this.service.deleteEmployeeById(id, this.token).subscribe(
@@ -60,6 +70,12 @@ export class EmployeeDetailsComponent {
   onViewBtnClick(Id: any) {
     this.getEmployeeById(Id);
     this.showEmployeeDetails();
+    this.viewUpdateEmployee = false;
+  }
+  onUpdateBtnClicK(Id: any) {
+    this.getEmployeeById(Id);
+    this.showUpdateEmployeeDetails();
+    this.viewEmployeeDetail = false;
   }
   getAllEmployeeOfOrganization() {
     this.service
