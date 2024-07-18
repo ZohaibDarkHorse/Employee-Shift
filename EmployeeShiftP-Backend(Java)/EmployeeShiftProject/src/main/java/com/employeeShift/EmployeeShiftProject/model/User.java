@@ -29,9 +29,7 @@ public class User implements UserDetails  {
 	@Column
 	private String phoneNumber;
 	
-	//a user can have multiple role
-	@OneToMany(cascade = CascadeType.ALL,fetch=FetchType.EAGER,mappedBy = "user")
-	@JsonIgnore
+
 	
 	
 	

@@ -29,16 +29,16 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 	@SuppressWarnings("deprecation")
 	@Override
-	public Employee getEmployeeById(Long id) {
+	public Optional<Employee> getEmployeeById(Long id) throws Exception{
 		// TODO Auto-generated method stub
-		return employeeRepository.getById(id);
+		return employeeRepository.findById(id);
 	}
 
 	@Override
 	public void updateEmployee(Employee employee) {
 		
 
-		Long id = employee.getId();
+		Long id = employee.getEmpId();
 		// TODO Auto-generated method stub
 		Optional<Employee> recordExist = employeeRepository.findById(id);
 		if(recordExist.isPresent()) {
@@ -52,6 +52,8 @@ public class EmployeeServiceImpl implements EmployeeService {
 			existingEmployee.setOrganization(employee.getOrganization());
 			existingEmployee.setAllocatedBy(employee.getAllocatedBy());
 			existingEmployee.setProject(employee.getProject());
+			existingEmployee.setAllocatedBy(employee.getAllocatedBy());
+			existingEmployee.setProfileImage(employee.getProfileImage());
 			
 			 employeeRepository.save(existingEmployee);
 			

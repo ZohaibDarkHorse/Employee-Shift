@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.employeeShift.EmployeeShiftProject.model.Employee;
-import com.employeeShift.EmployeeShiftProject.model.EmployeeResponse;
+//import com.employeeShift.EmployeeShiftProject.model.EmployeeResponse;
 import com.employeeShift.EmployeeShiftProject.service.EmployeeServiceImpl;
 
 @CrossOrigin(origins = "http://localhost:4200/")
@@ -24,30 +24,19 @@ public class EmployeeController {
 
 	
 
-	//EmployeeResponse EmployeeResponse;
+//	//EmployeeResponse EmployeeResponse;
+//
+//	@GetMapping("employeeShift/allEmployeeDetails")
+//	public EmployeeResponse getAllEmployeeDetails() {
+//		EmployeeResponse employeeResponse = new EmployeeResponse();
+//		
+//		employeeResponse.setAllEmployee(employeeServiceImpl.getAllEmployees());
+//		
+//		return employeeResponse;
+//		//return employeeServiceImpl.getAllEmployees();
+//	}
+//	
 
-	@GetMapping("employeeShift/allEmployeeDetails")
-	public EmployeeResponse getAllEmployeeDetails() {
-		EmployeeResponse employeeResponse = new EmployeeResponse();
-		
-		employeeResponse.setAllEmployee(employeeServiceImpl.getAllEmployees());
-		
-		return employeeResponse;
-		//return employeeServiceImpl.getAllEmployees();
-	}
-	
-	//This is using path variable 
-	@GetMapping("employeeShift/getEmployeeById/{id}")
-	public EmployeeResponse getEmployeeById(@PathVariable Long id) {
-		EmployeeResponse employeeResponse = new EmployeeResponse();
-		
-		Employee emp =employeeServiceImpl.getEmployeeById(id);
-		System.out.println(emp);
-		employeeResponse.setEmployee(emp);
-		//return employeeServiceImpl.getEmployeeById(id);
-		return employeeResponse;
-	}
-	
 	
 	//to be implemented
 //	@GetMapping("employeeShift/getEmployeeByName/query")
@@ -66,10 +55,6 @@ public class EmployeeController {
 		
 	}
 	
-	@DeleteMapping("employeeShift/deleteEmployee/{id}")
-	public void deleteById(@PathVariable Long id) {
-		employeeServiceImpl.deleteEmployee(id);
-	}
 	
 
 	

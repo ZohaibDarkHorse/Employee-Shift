@@ -4,20 +4,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
-import org.springframework.security.config.annotation.authentication.configurers.userdetails.DaoAuthenticationConfigurer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.http.CorsBeanDefinitionParser;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import com.employeeShift.EmployeeShiftProject.configuration.jwt.JwtAuthenticationEntryPoint;
 import com.employeeShift.EmployeeShiftProject.configuration.jwt.JwtAuthenticationFilter;
 
 @Configuration
+@EnableWebMvc
 public class SecurityConfig {
 
 
@@ -41,7 +40,9 @@ public class SecurityConfig {
                 //.cors().disable()
                 .authorizeRequests()
                 .requestMatchers("/employeeShift/auth/login").permitAll().requestMatchers("/employeeShift/registerUser").permitAll()
-                .requestMatchers("/images/**").permitAll() // Allow access to images
+                .requestMatchers("/images/**").permitAll()
+                .requestMatchers("/swagger-ui.html/**").permitAll() // Permit access to Swagger UI
+                .requestMatchers("/v3/api-docs/**").permitAll() // Allow access to images
                 .anyRequest()
                 .authenticated()
                 .and().exceptionHandling(ex -> ex.authenticationEntryPoint(point))

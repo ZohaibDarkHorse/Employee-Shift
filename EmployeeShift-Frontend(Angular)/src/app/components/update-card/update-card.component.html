@@ -1,10 +1,14 @@
-<div class="cardMain">
+<div class="cardMain" style="margin-top: 10px">
   <div class="card-header" style="display: flex; justify-content: flex-end">
     <button class="btn btn-danger" stle="margin-right">
       <i class="fa-solid fa-circle-xmark"></i>
     </button>
   </div>
-  <div class="card" style="width: 30rem">
+  <div
+    class="card"
+    style="width: 30rem"
+    *ngIf="userDetail && userDetail.GetEmployeeResponse"
+  >
     <img
       [src]="
         'http://localhost:8080/images/download/' +
@@ -14,44 +18,62 @@
       alt="Profile Image"
     />
     <div class="card-body">
-      <div class="input-group input-group-sm mb-3">
-        <span class="input-group-text" id="inputGroup-sizing-sm">Name</span>
-        <input
-          type="text"
-          class="form-control"
-          aria-label="Sizing example input"
-          aria-describedby="inputGroup-sizing-sm"
-          value="{{ userDetail.GetEmployeeResponse.name }}"
-        />
-      </div>
-      <div class="input-group input-group-sm mb-3">
-        <span class="input-group-text" id="inputGroup-sizing-sm">Project</span>
-        <input
-          type="text"
-          class="form-control"
-          aria-label="Sizing example input"
-          aria-describedby="inputGroup-sizing-sm"
-          value="{{ userDetail.GetEmployeeResponse.project }}"
-        />
-      </div>
-      <div class="input-group input-group-sm mb-3">
-        <span class="input-group-text" id="inputGroup-sizing-sm">Email</span>
-        <input
-          type="text"
-          class="form-control"
-          aria-label="Sizing example input"
-          aria-describedby="inputGroup-sizing-sm"
-          value="{{ userDetail.GetEmployeeResponse.emailId }}"
-        />
-      </div>
-      <div class="input-group input-group-sm mb-3">
-        <input
-          type="file"
-          class="form-control"
-          aria-label="Sizing example input"
-          aria-describedby="inputGroup-sizing-sm"
-        />
-      </div>
+      <form
+        #updateEmployeeDetailForm="ngForm"
+        (ngSubmit)="updateEmployee(updateEmployeeDetailForm)"
+      >
+        <div class="input-group input-group-sm mb-3">
+          <span class="input-group-text" id="inputGroup-sizing-sm">Name</span>
+          <input
+            type="text"
+            class="form-control"
+            name="name"
+            aria-label="Sizing example input"
+            aria-describedby="inputGroup-sizing-sm"
+            [(ngModel)]="userDetail.GetEmployeeResponse.name"
+          />
+        </div>
+        <div class="input-group input-group-sm mb-3">
+          <span class="input-group-text" id="inputGroup-sizing-sm"
+            >Project</span
+          >
+          <input
+            type="text"
+            ngModel
+            name="project"
+            class="form-control"
+            aria-label="Sizing example input"
+            aria-describedby="inputGroup-sizing-sm"
+            [(ngModel)]="userDetail.GetEmployeeResponse.project"
+          />
+        </div>
+        <div class="input-group input-group-sm mb-3">
+          <span class="input-group-text" id="inputGroup-sizing-sm">Email</span>
+          <input
+            type="text"
+            ngModel
+            name="emailId"
+            class="form-control"
+            aria-label="Sizing example input"
+            aria-describedby="inputGroup-sizing-sm"
+            [(ngModel)]="userDetail.GetEmployeeResponse.emailId"
+          />
+        </div>
+        <div class="input-group input-group-sm mb-3">
+          <input
+            type="file"
+            ngModel
+            name="image"
+            class="form-control"
+            aria-label="Sizing example input"
+            aria-describedby="inputGroup-sizing-sm"
+            (change)="onFileSelected($event)"
+          />
+        </div>
+        <button type="submit" class="btn btn-success">
+          <i class="fa-solid fa-floppy-disk"></i>
+        </button>
+      </form>
     </div>
   </div>
 </div>

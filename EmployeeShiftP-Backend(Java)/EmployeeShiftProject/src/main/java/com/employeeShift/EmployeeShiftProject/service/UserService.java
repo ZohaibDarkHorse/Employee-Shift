@@ -12,5 +12,7 @@ public interface UserService {
 	//List<Employee> getAllEmployee(User user);
 
 	List<Employee> getAllEmployee(String allocatedBy);
+	
+	User getUserByUserName(String userName);
 
 }

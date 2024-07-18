@@ -13,6 +13,8 @@ export class ApiServiceService {
   getEmployeeByIdUrl = 'http://localhost:8080/employeeShift/getEmployeeById/';
   addfEmployeeDetailUrl = 'http://localhost:8080/employeeShift/addEmployee';
   deleteEmployeeByIdUrl = 'http://localhost:8080/employeeShift/deleteEmployee/';
+  updateEmployeeDetailUrl =
+    'http://localhost:8080/employeeShift/updateEmployee';
   constructor(private http: HttpClient) {
     // Check if localStorage is available before accessing it
   }
@@ -56,5 +58,13 @@ export class ApiServiceService {
       Authorization: `Bearer ${token}`,
     });
     return this.http.delete<any>(this.deleteEmployeeByIdUrl + Id, { headers });
+  }
+  updateEmployeeDetail(formData: any, token: any): Observable<any> {
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`,
+    });
+    return this.http.put<any>(this.updateEmployeeDetailUrl, formData, {
+      headers,
+    });
   }
 }

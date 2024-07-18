@@ -40,10 +40,10 @@ public class Employee {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public long getId() {
+	public long getEmpId() {
 		return empId;
 	}
-	public void setId(Long id) {
+	public void setEmpId(Long id) {
 		this.empId = id;
 	}
 	public String getProject() {

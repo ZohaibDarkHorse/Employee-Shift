@@ -31,5 +31,10 @@ public class UserServiceImpl implements UserService {
 		
 		return employeeRepository.findByAllocatedBy(allocatedBy);
 	}
+	@Override
+	public User getUserByUserName(String userName) {
+		// TODO Auto-generated method stub
+		return userRepository.findByUserName(userName);
+	}
 
 }

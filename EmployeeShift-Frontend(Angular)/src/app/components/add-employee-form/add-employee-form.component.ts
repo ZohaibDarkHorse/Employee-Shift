@@ -36,6 +36,7 @@ export class AddEmployeeFormComponent {
     formData.append('emailId', form.value.emailId);
     formData.append('allocatedBy', this.username ?? '');
     formData.append('organization', form.value.organization);
+
     if (this.selectedFile) {
       formData.append('image', this.selectedFile, this.selectedFile.name);
     }

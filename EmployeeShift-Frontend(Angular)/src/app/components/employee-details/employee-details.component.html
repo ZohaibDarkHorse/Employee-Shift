@@ -20,7 +20,7 @@
           | paginate : { itemsPerPage: psize, currentPage: currentPage }
       "
     >
-      <td>{{ user.id }}</td>
+      <td>{{ user.empId }}</td>
       <td>{{ user.allocatedBy }}</td>
       <td>{{ user.emailId }}</td>
       <td>{{ user.name }}</td>
@@ -30,7 +30,7 @@
         <button
           type="button"
           class="btn btn-warning"
-          (click)="onUpdateBtnClicK(user.id)"
+          (click)="onUpdateBtnClicK(user.empId)"
         >
           <i class="fa-solid fa-user-pen"></i>
         </button>
@@ -39,13 +39,13 @@
         <button
           type="button"
           class="btn btn-danger"
-          (click)="deleteByID(user.id, $event)"
+          (click)="deleteByID(user.empId, $event)"
         >
           <i class="fa-solid fa-trash"></i>
         </button>
       </td>
       <td>
-        <button class="btn btn-info" (click)="onViewBtnClick(user.id)">
+        <button class="btn btn-info" (click)="onViewBtnClick(user.empId)">
           <i class="fa-solid fa-eye"></i>
         </button>
       </td>
