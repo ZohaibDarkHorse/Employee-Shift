@@ -8,7 +8,11 @@ bootstrapApplication(AppComponent, {
   ...appConfig,
   providers: [
     provideAnimations(), // Required animations providers
-    provideToastr(), // Toastr providers
+    provideToastr({
+      preventDuplicates: true,
+      progressBar: true,
+      progressAnimation: 'decreasing',
+    }), // Toastr providers
     ...appConfig.providers, // Include other providers from appConfig if needed
   ],
 }).catch((err) => console.error(err));

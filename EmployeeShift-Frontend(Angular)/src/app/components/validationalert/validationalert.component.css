@@ -1,0 +1,7 @@
+.warning {
+  background-color: #fff3cd; /* Yellow */
+  color: #856404; /* Black text */
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ffeeba; /* Slightly darker yellow for border */
+}

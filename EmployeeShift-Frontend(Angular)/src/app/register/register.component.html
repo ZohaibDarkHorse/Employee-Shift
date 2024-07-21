@@ -6,7 +6,7 @@
     background-color: #81b1ce;
     margin-top: 100px;
     margin-bottom: 100px;
-    height: 500px;
+    height: auto;
     /* height: 350px; */
     max-width: 500px;
     border-radius: 10%;
@@ -23,60 +23,82 @@
     </h3>
     <div class="mb-3">
       <label for="Inputorganization" class="form-label">
-        <i class="fa-solid fa-building fa-bounce"></i> Organization Name
+        <i class="fa-solid fa-building"></i> Organization Name
       </label>
       <input
         type="text"
-        ngModel
+        [(ngModel)]="validateOrganization"
         name="organization"
         class="form-control"
         id="Inputorganization"
         placeholder="Enter Organization Name"
+        (ngModelChange)="validation()"
       />
+      <app-validationalert
+        *ngIf="validateOrganization === '' && showValidationAlert"
+        [message]="'Please Enter Organization Name'"
+      ></app-validationalert>
     </div>
 
     <div class="mb-3">
       <label for="InputEmail" class="form-label">
-        <i class="fa-solid fa-envelope fa-bounce"></i> Email address
+        <i class="fa-solid fa-envelope"></i> Email address
       </label>
       <input
         type="email"
-        ngModel
+        [(ngModel)]="validateEmail"
         name="userName"
         class="form-control"
         id="InputEmail"
         aria-describedby="emailHelp"
         placeholder="Enter Email"
+        (ngModelChange)="validation()"
       />
+      <app-validationalert
+        *ngIf="validateEmail === '' && showValidationAlert"
+        [message]="'Please Enter Organization Name'"
+      ></app-validationalert>
     </div>
 
     <div class="mb-3">
       <label for="PhoneNumber" class="form-label">
-        <i class="fa-solid fa-square-phone fa-bounce"></i> Phone Number
+        <i class="fa-solid fa-square-phone"></i> Phone Number
       </label>
       <input
-        type="number"
-        ngModel
+        type="tel"
+        [(ngModel)]="validatePhoneNumber"
         name="phoneNumber"
         class="form-control"
         id="PhoneNumber"
         placeholder="Enter Your Phone Number"
+        (ngModelChange)="validation()"
       />
+      <app-validationalert
+        *ngIf="validatePhoneNumber === '' && showValidationAlert"
+        [message]="'Please Enter Organization Name'"
+      ></app-validationalert>
     </div>
     <div class="mb-3">
       <label for="InputPassword" class="form-label">
-        <i class="fa-solid fa-lock fa-bounce"></i> Password
+        <i class="fa-solid fa-lock"></i> Password
       </label>
       <input
         type="password"
         name="password"
-        ngModel
+        [(ngModel)]="validatePassword"
         class="form-control"
         id="InputPassword"
         placeholder="Enter Password"
+        (ngModelChange)="validation()"
       />
+      <app-validationalert
+        *ngIf="validatePassword === '' && showValidationAlert"
+        [message]="'Please Enter Organization Name'"
+      ></app-validationalert>
     </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" class="btn btn-primary" [disabled]="submitIsHidden">
+      Submit
+    </button>
   </form>
 </div>
 <!-- #8fb1ce -->
