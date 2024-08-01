@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ApiServiceService } from '../../../services/api-service.service';
@@ -12,6 +12,8 @@ import { ApiServiceService } from '../../../services/api-service.service';
 })
 export class UpdateCardComponent {
   @Input() userDetail: any;
+  @Output() closeUpdateEmployeeModal = new EventEmitter<boolean>();
+
   username: string | null; // Declare username property
   token: string | null;
   selectedFile: File | null = null;
@@ -30,15 +32,30 @@ export class UpdateCardComponent {
     const file = event.target.files[0];
     this.selectedFile = file ?? null;
   }
+
+  closeUpdateEmployeeModalFunction() {
+    this.closeUpdateEmployeeModal.emit(false);
+  }
+
+  getProfileImageUrl(): string {
+    const baseUrl = 'http://localhost:8080/images/download/';
+    const profileImage =
+      this.userDetail.GetEmployeeByIdResponse.EmployeeDetail.profileImage;
+    return profileImage ? `${baseUrl}${profileImage}` : '';
+  }
+
   updateEmployee(form: any) {
     const formData = new FormData();
-    formData.append('empId', this.userDetail.GetEmployeeResponse.empId);
+    formData.append(
+      'empId',
+      this.userDetail.GetEmployeeByIdResponse.EmployeeDetail.empId
+    );
     formData.append('name', form.value.name);
     formData.append('project', form.value.project);
     formData.append('emailId', form.value.emailId);
     formData.append(
       'organization',
-      this.userDetail.GetEmployeeResponse.organization
+      this.userDetail.GetEmployeeByIdResponse.EmployeeDetail.organization
     );
     if (this.selectedFile) {
       formData.append('image', this.selectedFile, this.selectedFile.name);
@@ -47,13 +64,16 @@ export class UpdateCardComponent {
     formData.append('allocatedBy', this.username ?? '');
     this.service.updateEmployeeDetail(formData, this.token).subscribe(
       (result) => {
-        console.log(result);
+        this.closeUpdateEmployeeModalFunction();
 
+        alert('Updated');
         // this.userById = result;
-        window.location.reload();
+        location.reload();
       },
       (error) => {
-        alert(error);
+        alert('You Hit a error');
+        console.log(error);
+        //alert(error);
       }
     );
   }

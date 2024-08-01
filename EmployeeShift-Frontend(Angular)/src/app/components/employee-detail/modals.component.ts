@@ -18,4 +18,10 @@ export class ModalsComponent {
     this.showModal = false;
     this.updateEvent.emit(this.showModal);
   }
+  getProfileImageUrl(): string {
+    const baseUrl = 'http://localhost:8080/images/download/';
+    const profileImage =
+      this.userDetail.GetEmployeeByIdResponse.EmployeeDetail.profileImage;
+    return profileImage ? `${baseUrl}${profileImage}` : '';
+  }
 }

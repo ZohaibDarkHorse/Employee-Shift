@@ -220,7 +220,7 @@ public class UserController {
 			// Save the student object and return the saved object
 			employeeServiceImpl.updateEmployee(employee);
 			
-			return ResponseEntity.ok("Record Updated");
+			return ResponseEntity.ok().build();
 
 			// employeeServiceImpl.saveEmployee(employee);
 		} catch (IOException e) {

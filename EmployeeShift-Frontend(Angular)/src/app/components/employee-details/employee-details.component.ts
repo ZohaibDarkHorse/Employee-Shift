@@ -2,8 +2,10 @@ import { Component } from '@angular/core';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { ApiServiceService } from '../../../services/api-service.service';
 import { CommonModule } from '@angular/common';
-import { ModalsComponent } from '../modals/modals.component';
+import { ModalsComponent } from '../employee-detail/modals.component';
 import { UpdateCardComponent } from '../update-card/update-card.component';
+import { error } from 'node:console';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-employee-details',
@@ -20,8 +22,24 @@ import { UpdateCardComponent } from '../update-card/update-card.component';
 export class EmployeeDetailsComponent {
   username: string | null; // Declare username property
   token: string | null;
-  users: any;
-  userById: any;
+  users: any = {
+    GetAllEmployeeResponse: {
+      EmployeeList: [],
+    },
+  };
+  employeeDetail: any = {
+    GetEmployeeByIdResponse: {
+      EmployeeDetail: {
+        empId: null,
+        name: '',
+        project: '',
+        emailId: '',
+        allocatedBy: '',
+        organization: '',
+        profileImage: '',
+      },
+    },
+  };
   viewEmployeeDetail = false;
   viewUpdateEmployee = false;
   psize = 10;
@@ -41,10 +59,11 @@ export class EmployeeDetailsComponent {
     this.service.getEmployeeById(Id, this.token).subscribe(
       (result) => {
         console.log(result);
-        this.userById = result;
+        this.employeeDetail = result;
+        console.log(this.employeeDetail);
       },
       (error) => {
-        alert(error);
+        console.log('HAHA');
       }
     );
   }
@@ -77,7 +96,7 @@ export class EmployeeDetailsComponent {
     this.showUpdateEmployeeDetails();
     this.viewEmployeeDetail = false;
   }
-  getAllEmployeeOfOrganization() {
+  getAllEmployeeOfOrganization(): void {
     this.service
       .getAllEmployeeOfOrganization(this.username, this.token)
       .subscribe(
@@ -86,6 +105,7 @@ export class EmployeeDetailsComponent {
         },
         (error) => {
           console.log(error);
+          this.users = { GetAllEmployeeResponse: { EmployeeList: [] } }; // Ensure the structure is there in case of error
         }
       );
   }
@@ -93,8 +113,11 @@ export class EmployeeDetailsComponent {
   getValueFromModal(data: any) {
     this.viewEmployeeDetail = data;
   }
+  getValueFromcloseUpdateEmployeeModal(data: any) {
+    this.viewUpdateEmployee = data;
+  }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.getAllEmployeeOfOrganization();
   }
 }

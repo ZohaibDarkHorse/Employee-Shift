@@ -14,55 +14,58 @@
     </tr>
   </thead>
   <tbody>
-    <tr
-      *ngFor="
-        let user of users
-          | paginate : { itemsPerPage: psize, currentPage: currentPage }
-      "
-    >
-      <td>{{ user.empId }}</td>
-      <td>{{ user.allocatedBy }}</td>
-      <td>{{ user.emailId }}</td>
-      <td>{{ user.name }}</td>
-      <td>{{ user.organization }}</td>
-      <td>{{ user.project }}</td>
-      <td>
-        <button
-          type="button"
-          class="btn btn-warning"
-          (click)="onUpdateBtnClicK(user.empId)"
-        >
-          <i class="fa-solid fa-user-pen"></i>
-        </button>
-      </td>
-      <td>
-        <button
-          type="button"
-          class="btn btn-danger"
-          (click)="deleteByID(user.empId, $event)"
-        >
-          <i class="fa-solid fa-trash"></i>
-        </button>
-      </td>
-      <td>
-        <button class="btn btn-info" (click)="onViewBtnClick(user.empId)">
-          <i class="fa-solid fa-eye"></i>
-        </button>
-      </td>
-    </tr>
+    <ng-container *ngIf="users.GetAllEmployeeResponse.EmployeeList">
+      <tr
+        *ngFor="
+          let user of users.GetAllEmployeeResponse.EmployeeList
+            | paginate : { itemsPerPage: psize, currentPage: currentPage }
+        "
+      >
+        <td>{{ user.empId }}</td>
+        <td>{{ user.allocatedBy }}</td>
+        <td>{{ user.emailId }}</td>
+        <td>{{ user.name }}</td>
+        <td>{{ user.organization }}</td>
+        <td>{{ user.project }}</td>
+        <td>
+          <button
+            type="button"
+            class="btn btn-warning"
+            (click)="onUpdateBtnClicK(user.empId)"
+          >
+            <i class="fa-solid fa-user-pen"></i>
+          </button>
+        </td>
+        <td>
+          <button
+            type="button"
+            class="btn btn-danger"
+            (click)="deleteByID(user.empId, $event)"
+          >
+            <i class="fa-solid fa-trash"></i>
+          </button>
+        </td>
+        <td>
+          <button class="btn btn-info" (click)="onViewBtnClick(user.empId)">
+            <i class="fa-solid fa-eye"></i>
+          </button>
+        </td>
+      </tr>
+    </ng-container>
   </tbody>
 </table>
 <pagination-controls (pageChange)="currentPage = $event"></pagination-controls>
 
 <app-modals
   *ngIf="viewEmployeeDetail == true"
-  [userDetail]="userById"
+  [userDetail]="employeeDetail"
   class="modal-overlay"
   (updateEvent)="getValueFromModal($event)"
 ></app-modals>
 
 <app-update-card
   *ngIf="viewUpdateEmployee == true"
-  [userDetail]="userById"
+  [userDetail]="employeeDetail"
+  (closeUpdateEmployeeModal)="getValueFromcloseUpdateEmployeeModal($event)"
   class="modal-overlay"
 ></app-update-card>
